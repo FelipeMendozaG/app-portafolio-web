@@ -1,6 +1,18 @@
 {
-    "name":"Felipe",
-    "lastname":"Mendoza Gutierrez",
-    "work":"Desarrollador Full - Stack",
-    "full_name":"Felipe Mendoza Gutierrez"
+    "es":{
+        "name":"Felipe",
+        "lastname":"Mendoza Gutierrez",
+        "work":"Desarrollador Full - Stack",
+        "full_name":"Felipe Mendoza Gutierrez",
+        "github":"https://github.com/FelipeMendozaG",
+        "linkedin":"https://www.linkedin.com/in/felipe-mendoza-gutierrez-10a86b1bb/"
+    },
+    "en":{
+        "name":"Felipe",
+        "lastname":"Mendoza Gutierrez",
+        "work":"Full-Stack Developer",
+        "full_name":"Felipe Mendoza Gutierrez",
+        "github":"https://github.com/FelipeMendozaG",
+        "linkedin":"https://www.linkedin.com/in/felipe-mendoza-gutierrez-10a86b1bb/"
+    }
 }

@@ -1,15 +1,22 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import MyNav from '../data/nav'
 import { CodeBracketSquareIcon, Bars3Icon, XMarkIcon } from '@heroicons/react/24/solid'
-
+import {useLangProject} from '../app/store-zustand'
 const MyNavBar = () => {
     const [isOpen, setIsOpen] = useState(false);
-    
+    const [
+        lang,
+        spanish,
+        inglish,
+    ] = useLangProject(state=>[
+        state.lang,
+        state.spanish,
+        state.inglish
+    ])
     const toggleNavbar = () => {
         setIsOpen(!isOpen);
     };
-
     return (
         <nav className="bg-blue-500 p-4">
             <div className="flex items-center justify-between">
@@ -20,8 +27,16 @@ const MyNavBar = () => {
                 </div>
                 <div className="hidden md:flex space-x-9">
                     {
-                        MyNav.listnav.map((item,index)=><Link key={index} to={item.url} className="text-white font-bold text-xl">{item.text}</Link>)
+                        MyNav.listnav[lang].map((item,index)=><Link key={index} to={item.url} className="text-white font-bold text-xl">{item.text}</Link>)
                     }
+                    <div className='flex gap-4 grid-cols-2'>
+                        <button onClick={()=>inglish()}>
+                            EN
+                        </button>
+                        <button onClick={()=>spanish()}>
+                            ES
+                        </button>
+                    </div>
                 </div>
                 <div className="md:hidden">
                     <button
@@ -40,7 +55,7 @@ const MyNavBar = () => {
             {isOpen && (
                 <div className="mt-4 md:hidden">
                     {
-                        MyNav.listnav.map((item,index)=><Link key={index} to={item.url} onClick={toggleNavbar} className="block text-white ml-10 my-4 text-xl font-bold">{item.text}</Link>)
+                        MyNav.listnav[lang].map((item,index)=><Link key={index} to={item.url} onClick={toggleNavbar} className="block text-white ml-10 my-4 text-xl font-bold">{item.text}</Link>)
                     }
                 </div>
             )}
