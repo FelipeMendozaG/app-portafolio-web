@@ -18,7 +18,7 @@ const MyNavBar = () => {
         setIsOpen(!isOpen);
     };
     return (
-        <nav className="bg-blue-500 p-4">
+        <nav className="bg-blue-500 p-4 fixed top-0 w-full z-50">
             <div className="flex items-center justify-between">
                 <div className="flex items-center">
                     <Link to="/" className="text-white font-bold text-xl">

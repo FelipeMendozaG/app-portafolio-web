@@ -7,26 +7,26 @@ import { useLangProject } from '../app/store-zustand';
 const MyBanner = () => {
     const [
         lang
-    ] = useLangProject(state=>[
+    ] = useLangProject(state => [
         state.lang
     ]);
-    const {full_name,work,github,linkedin} = profile[lang];
-    const VisitGitHub = ()=>{
+    const { full_name, work, github, linkedin } = profile[lang];
+    const VisitGitHub = () => {
         let url = document.createElement('a')
         url.href = github
         url.target = '_blank'
         url.click()
-        return ;
+        return;
     }
-    const VisitLinkedin = ()=>{
+    const VisitLinkedin = () => {
         let url = document.createElement('a');
         url.href = linkedin;
         url.target = '_blank'
         url.click()
-        return ;
+        return;
     }
     return (
-        <div className="bg-gray-200 px-8 flex flex-col md:flex-row items-center justify-center">
+        <div className="bg-gray-200 mt-[4rem] px-8 flex flex-col md:flex-row items-center justify-center">
             <div className="font-bold md:w-1/2 md:pr-8 mt-10">
                 <span className='block text-6xl md:text-center lg:text-left sm:text-center'>
                     <Typewriter
@@ -39,7 +39,7 @@ const MyBanner = () => {
                     />
                 </span>
                 <span className='block text-2xl lg:text-left sm:text-center mt-4'>{work}</span>
-                <div className='flex gap-4 grid-cols-3 my-4'>
+                <div className='flex gap-4 grid-cols-3 my-4 lg:justify-start sm:justify-center'>
                     <button onClick={VisitGitHub}>
                         <FontAwesomeIcon icon={faGithubSquare} size='2xl' />
                     </button>

@@ -1,0 +1,12 @@
+{
+    "es":{
+        "title":"Acerca de mi",
+        "aboutme":"¡Hola! Soy Felipe Mendoza, un apasionado programador backend con dos años de experiencia en el mundo del desarrollo de software. Mi enfoque está en crear soluciones sólidas y eficientes para desafíos técnicos. Cuando no estoy codificando, me encanta explorar nuevas tecnologías y mejorar mis habilidades constantemente.",
+        "end":"Estoy emocionado por lo que depara el futuro y ansioso por colaborar en proyectos interesantes."
+    },
+    "en":{
+        "title":"About Me",
+        "aboutme":"Hello! I'm Felipe Mendoza, a passionate backend programmer with two years of experience in the world of software development. My focus is on creating robust and efficient solutions for technical challenges. When I'm not coding, I love exploring new technologies and continually improving my skills.",
+        "end":"I'm excited about what the future holds and eager to collaborate on interesting projects."
+    }
+}
