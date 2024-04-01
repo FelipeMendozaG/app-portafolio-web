@@ -3,6 +3,7 @@ import { faEnvelope, faFilePdf } from '@fortawesome/free-solid-svg-icons';
 import contactinfo from '../data/contactinfo.json';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useLangProject } from '../app/store-zustand';
+import pdfcv from '../assets/cv/CV-FELIPE-MENDOZA-2024.pdf'
 import React from 'react';
 
 const ContactInfo = () => {
@@ -26,7 +27,7 @@ const ContactInfo = () => {
 
     const handleDownloadCV = () => {
         // Agrega la URL de descarga de tu CV
-        window.open('/src/assets/cv/CV-FELIPE-MENDOZA-2024.pdf', '_blank');
+        window.open(pdfcv, '_blank');
     };
 
     return (

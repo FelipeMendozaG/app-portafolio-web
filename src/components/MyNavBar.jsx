@@ -1,4 +1,6 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
+import flagusa from '../assets/flag_usa.png';
+import flagesp from '../assets/flag_spain.jpg';
 import { Link } from 'react-router-dom';
 import MyNav from '../data/nav'
 import { CodeBracketSquareIcon, Bars3Icon, XMarkIcon } from '@heroicons/react/24/solid'
@@ -38,10 +40,10 @@ const MyNavBar = () => {
                     }
                     <div className='flex gap-4 grid-cols-2'>
                         <button onClick={()=>inglish()}>
-                            <img src="/src/assets/flag_usa.png" className='w-8 h-7 rounded-md' alt="INGLES" />
+                            <img src={flagusa} className='w-8 h-7 rounded-md' alt="INGLES" />
                         </button>
                         <button onClick={()=>spanish()}>
-                            <img src="/src/assets/flag_spain.jpg" className='w-8 h-7 rounded-md' alt="ESPAÑOL" />
+                            <img src={flagesp} className='w-8 h-7 rounded-md' alt="ESPAÑOL" />
                         </button>
                     </div>
                 </div>
