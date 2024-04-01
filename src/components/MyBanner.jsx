@@ -26,7 +26,7 @@ const MyBanner = () => {
         return;
     }
     return (
-        <div className="bg-gray-200 mt-[4rem] px-8 flex flex-col md:flex-row items-center justify-center">
+        <div id='/' className="bg-gray-200 mt-[4rem] px-8 flex flex-col md:flex-row items-center justify-center">
             <div className="font-bold md:w-1/2 md:pr-8 mt-10">
                 <span className='block text-6xl md:text-center lg:text-left sm:text-center'>
                     <Typewriter

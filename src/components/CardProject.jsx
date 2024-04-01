@@ -1,5 +1,11 @@
+import {useStateModal} from '../app/store-zustand'
+
 const CardProject = ({ project }) => {
-    console.log(project);
+    const [setModalProject,setProjectSelected] = useStateModal(state=>[state.setModalProject, state.setProjectSelected])
+    const OpenModal=()=>{
+        setModalProject(true);
+        setProjectSelected(project);
+    }
     return (
         <div className="bg-white rounded-lg shadow-md mb-4">
             <img
@@ -20,14 +26,13 @@ const CardProject = ({ project }) => {
                         </span>
                     ))}
                 </div>
-                <a
-                    href={''}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                <button
                     className="text-blue-500 hover:underline"
+                    type="button"
+                    onClick={()=>{OpenModal()}}
                 >
                     Ver proyecto
-                </a>
+                </button>
             </div>
         </div>
     );

@@ -6,15 +6,15 @@ export default {
                 text:'INICIO',
             },
             {
-                url:'/acerca-de-felipe',
+                url:'acerca-de-felipe',
                 text:'ACERCA DE MI'
             },
             {
-                url:'/proyectos',
+                url:'proyectos',
                 text:'PROYECTOS'
             },
             {
-                url:'/contactame',
+                url:'contactame',
                 text:'CONTACTAME'
             }
         ],

@@ -1,4 +1,4 @@
-version: '3.8'
+version: '3'
 
 services:
   react-app:
@@ -7,3 +7,11 @@ services:
       dockerfile: Dockerfile
     ports:
       - "8181:8181"
+    deploy:
+      resources:
+        limits:
+          cpus: '0.15'
+          memory: 250M
+        reservations:
+          cpus: '0.1'
+          memory: 128M

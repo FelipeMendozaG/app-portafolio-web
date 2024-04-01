@@ -5,7 +5,7 @@ const Proyects = ()=>{
     const [lang] = useLangProject(state=>[state.lang]);
     const projects = ProjectList[lang];
     return (
-        <div className="px-10">
+        <div id="proyectos" className="px-10">
             <div className="my-6">
                 <h2 className="text-3xl font-semibold mb-4">{'Proyectos'}</h2>
             </div>

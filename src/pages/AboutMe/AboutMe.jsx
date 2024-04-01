@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { useLangProject } from '../../app/store-zustand';
 import imageAboutMe from '../../assets/programador-trabajando-con-fondo-transparente.jpg';
 import JsonAboutMe from '../../data/aboutme.json';
+import MySkills from '../../components/MySkills';
 const AboutMe = () => {
     const [lang] = useLangProject(state => [state.lang]);
     const {title,aboutme,end} = JsonAboutMe[lang];
@@ -9,7 +10,7 @@ const AboutMe = () => {
         console.log(lang);
     }, []);
     return (
-        <section className="bg-gray-100 py-16">
+        <section id='acerca-de-felipe' className="bg-gray-100 py-16">
             <div className="container mx-auto px-4">
                 <div className="md:flex md:items-center justify-around">
                     <div className="md:w-80 md:pr-8 mb-4 md:mb-0">
@@ -30,6 +31,7 @@ const AboutMe = () => {
                     </div>
                 </div>
             </div>
+            <MySkills />
         </section>
     )
 }
