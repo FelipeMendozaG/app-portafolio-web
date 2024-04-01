@@ -24,15 +24,15 @@ export default {
                 text:'HOME',
             },
             {
-                url:'/acerca-de-felipe',
+                url:'acerca-de-felipe',
                 text:'ABOUT ME'
             },
             {
-                url:'/proyectos',
+                url:'proyectos',
                 text:'PROJECTS'
             },
             {
-                url:'/contactame',
+                url:'contactame',
                 text:'CONTACT ME'
             }
         ]
