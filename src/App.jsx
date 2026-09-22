@@ -6,13 +6,14 @@ import Proyects from './pages/Proyects/Proyects';
 const App = () =>{
   return (
     <BrowserRouter>
-      <MyNavBar />
-      <Routes>
-        <Route element={<Home />} path="/" />
-        <Route element={<AboutMe />} path="/acerca-de-felipe" />
-        <Route element={<Proyects />} path="/proyectos" />
-        <Route element={<Home />} path="/" />
-      </Routes>
+      <div className="page-grid min-h-screen">
+        <MyNavBar />
+        <Routes>
+          <Route element={<Home />} path="/" />
+          <Route element={<AboutMe />} path="/acerca-de-felipe" />
+          <Route element={<Proyects />} path="/proyectos" />
+        </Routes>
+      </div>
     </BrowserRouter>
   )
 }

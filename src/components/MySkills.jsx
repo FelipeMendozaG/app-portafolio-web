@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from 'swiper/modules';
 import skills from '../data/skills';
@@ -6,6 +6,7 @@ import skills from '../data/skills';
 import "swiper/css";
 import 'swiper/css/pagination';
 import { useLangProject } from '../app/store-zustand';
+import { motion } from 'framer-motion';
 
 const MySkills = () => {
     const [
@@ -23,7 +24,8 @@ const MySkills = () => {
     return (
         <>
         <br />
-            <div className="mx-auto w-full max-w-7xl my-8">
+            <div className="mx-auto mt-20 w-full max-w-6xl">
+                <div className="mb-7 flex items-end justify-between"><div><p className="eyebrow mb-3">02 / stack</p><h3 className="text-2xl font-semibold text-white">{lang === 'es' ? 'Herramientas que uso' : 'Tools I use'}</h3></div><span className="font-mono text-xs text-slate-500">{MySkills?.length} technologies</span></div>
                 <Swiper
                     breakpoints={{
                         430: {
@@ -56,19 +58,20 @@ const MySkills = () => {
                 >
                     {MySkills?.map((tech, index) => (
                         <SwiperSlide key={index}>
-                            <div className="p-4 rounded-md">
+                            <motion.div whileHover={{ y: -5 }} className="glass group min-h-52 rounded-xl p-5 transition hover:border-cyan/40 hover:shadow-glow">
                                 <img
                                     src={tech.image}
                                     alt={tech.description}
-                                    className="w-32 h-32 md:w-48 md:h-48 object-contain mb-2 cursor-pointer mx-auto"
+                                    className="mx-auto mb-4 h-24 w-24 cursor-pointer object-contain transition duration-300 group-hover:scale-110"
                                     onClick={() => handleTechClick(tech.description)}
                                 />
                                 {activeDescription === tech.description && (
-                                    <div className="bg-gray-200 p-4 rounded-md mt-2">
-                                        <p className="text-sm">{tech.description}</p>
+                                    <div className="mt-2">
+                                        <p className="text-xs leading-5 text-slate-400">{tech.description}</p>
                                     </div>
                                 )}
-                            </div>
+                                <p className="font-mono text-sm text-slate-200">{tech.title}</p>
+                            </motion.div>
                         </SwiperSlide>
                     ))}
                 </Swiper>

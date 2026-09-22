@@ -4,7 +4,8 @@ import contactinfo from '../data/contactinfo.json';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useLangProject } from '../app/store-zustand';
 import pdfcv from '../assets/cv/CV-FELIPE-MENDOZA-2024.pdf'
-import React from 'react';
+import { useState } from 'react';
+import { motion } from 'framer-motion';
 
 const ContactInfo = () => {
     const [
@@ -13,6 +14,8 @@ const ContactInfo = () => {
         state.lang
     ]);
     const { title, description } = contactinfo[lang];
+    const [copied, setCopied] = useState(false);
+    const copyEmail = async () => { await navigator.clipboard.writeText('felipe188.mendoza@gmail.com'); setCopied(true); setTimeout(() => setCopied(false), 1800); };
     const handleEmailClick = () => {
         window.location.href = 'mailto:felipe188.mendoza@gmail.com';
     };
@@ -31,28 +34,18 @@ const ContactInfo = () => {
     };
 
     return (
-        <div id='contactame' className="bg-gray-100 py-8 my-7">
-            <div className="container mx-auto px-4">
-                <div className="text-center">
-                    <p className="text-lg font-bold mb-4">{title}</p>
-                    <div className="flex justify-center items-center space-x-4 mb-4">
-                        <div className="cursor-pointer bg-gray-200 rounded-full p-2 hover:bg-gray-300 transition duration-300">
-                            <FontAwesomeIcon icon={faEnvelope} size="2x" onClick={handleEmailClick} />
-                        </div>
-                        <div className="cursor-pointer bg-gray-200 rounded-full p-2 hover:bg-gray-300 transition duration-300">
-                            <FontAwesomeIcon icon={faLinkedin} size="2x" onClick={handleLinkedInClick} />
-                        </div>
-                        <div className="cursor-pointer bg-gray-200 rounded-full p-2 hover:bg-gray-300 transition duration-300">
-                            <FontAwesomeIcon icon={faGithub} size="2x" onClick={handleGithubClick} />
-                        </div>
-                        <div className="cursor-pointer bg-gray-200 rounded-full p-2 hover:bg-gray-300 transition duration-300">
-                            <FontAwesomeIcon icon={faFilePdf} size="2x" onClick={handleDownloadCV} />
-                        </div>
+        <section id='contactame' className="section-shell scroll-mt-16 pt-12">
+            <motion.div initial={{ opacity: 0, y: 18 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="relative overflow-hidden rounded-2xl border border-cyan/20 bg-cyan/[0.06] p-8 sm:p-12">
+                <div className="relative z-10 max-w-2xl"><p className="eyebrow mb-4">04 / contact</p><h2 className="text-4xl font-semibold text-white sm:text-5xl">{lang === 'es' ? 'Trabajemos juntos.' : "Let's work together."}</h2><p className="mt-5 text-slate-400">{description}</p>
+                    <div className="mt-8 flex flex-wrap items-center gap-3">
+                        <button onClick={handleEmailClick} className="rounded-lg bg-cyan px-4 py-3 font-semibold text-ink transition hover:-translate-y-1 hover:shadow-glow"><FontAwesomeIcon icon={faEnvelope} className="mr-2" /> {title}</button>
+                        <button onClick={copyEmail} className="rounded-lg border border-white/15 px-4 py-3 font-mono text-xs text-slate-300 transition hover:border-cyan/50 hover:text-white">{copied ? (lang === 'es' ? '¡Copiado!' : 'Copied!') : 'felipe188.mendoza@gmail.com'}</button>
                     </div>
-                    <p className="text-sm">{description}</p>
+                    <div className="mt-8 flex gap-5 text-xl text-slate-400"><button aria-label="LinkedIn" onClick={handleLinkedInClick} className="transition hover:-translate-y-1 hover:text-cyan"><FontAwesomeIcon icon={faLinkedin} /></button><button aria-label="GitHub" onClick={handleGithubClick} className="transition hover:-translate-y-1 hover:text-cyan"><FontAwesomeIcon icon={faGithub} /></button><button aria-label="Download CV" onClick={handleDownloadCV} className="transition hover:-translate-y-1 hover:text-cyan"><FontAwesomeIcon icon={faFilePdf} /></button></div>
                 </div>
-            </div>
-        </div>
+                <div className="absolute -right-16 -top-24 h-72 w-72 rounded-full border border-cyan/20" /><div className="absolute -bottom-36 right-24 h-72 w-72 rounded-full border border-violet/20" />
+            </motion.div>
+        </section>
     );
 };
 

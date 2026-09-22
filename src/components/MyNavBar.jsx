@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import flagusa from '../assets/flag_usa.png';
 import flagesp from '../assets/flag_spain.jpg';
 import { Link } from 'react-router-dom';
@@ -17,9 +17,18 @@ const MyNavBar = () => {
         state.spanish,
         state.inglish
     ])
-    const toggleNavbar = () => {
-        setIsOpen(!isOpen);
-    };
+    const [activeSection, setActiveSection] = useState('/');
+    const toggleNavbar = () => setIsOpen(!isOpen);
+    useEffect(() => {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => { if (entry.isIntersecting) setActiveSection(entry.target.id); });
+        }, { rootMargin: '-35% 0px -55% 0px' });
+        ['/', 'acerca-de-felipe', 'proyectos', 'contactame'].forEach((id) => {
+            const section = document.getElementById(id);
+            if (section) observer.observe(section);
+        });
+        return () => observer.disconnect();
+    }, []);
     const scrollToSection = (sectionId) => {
         const section = document.getElementById(sectionId);
         if (section) {
@@ -27,44 +36,45 @@ const MyNavBar = () => {
         }
     };
     return (
-        <nav className="bg-gray-900 p-4 fixed top-0 w-full z-50">
-            <div className="flex items-center justify-between">
+        <nav className="fixed top-0 z-50 w-full border-b border-white/10 bg-ink/75 px-5 py-3 backdrop-blur-xl sm:px-8">
+            <div className="mx-auto flex max-w-6xl items-center justify-between">
                 <div className="flex items-center">
-                    <Link to="/" className="text-white font-bold text-xl">
-                        <CodeBracketSquareIcon className="mx-5 h-12 w-12 text-white-500" />
+                    <Link to="/" className="flex items-center gap-3 text-white">
+                        <CodeBracketSquareIcon className="h-8 w-8 text-cyan" />
+                        <span className="hidden font-mono text-sm text-slate-300 sm:block">felipe.dev</span>
                     </Link>
                 </div>
-                <div className="hidden md:flex space-x-9">
+                <div className="hidden items-center gap-7 md:flex">
                     {
-                        MyNav.listnav[lang].map((item,index)=><Link key={index} to={'#'} onClick={() => scrollToSection(item.url)} className="text-white font-bold text-xl">{item.text}</Link>)
+                        MyNav.listnav[lang].map((item,index)=><Link key={index} to={'#'} onClick={() => scrollToSection(item.url)} className={`font-mono text-xs transition-colors ${activeSection === item.url ? 'text-cyan' : 'text-slate-400 hover:text-white'}`}>{item.text}</Link>)
                     }
                     <div className='flex gap-4 grid-cols-2'>
                         <button onClick={()=>inglish()}>
-                            <img src={flagusa} className='w-8 h-7 rounded-md' alt="INGLES" />
+                            <img src={flagusa} className='h-5 w-7 rounded object-cover opacity-80 hover:opacity-100' alt="English" />
                         </button>
                         <button onClick={()=>spanish()}>
-                            <img src={flagesp} className='w-8 h-7 rounded-md' alt="ESPAÑOL" />
+                            <img src={flagesp} className='h-5 w-7 rounded object-cover opacity-80 hover:opacity-100' alt="Español" />
                         </button>
                     </div>
                 </div>
                 <div className="md:hidden">
                     <button
                         onClick={toggleNavbar}
-                        className="text-white focus:outline-none"
+                        className="text-slate-300 focus:outline-none"
                     >
                             {isOpen ? (
-                                <XMarkIcon className="mx-5  h-10 w-10 text-white-500" />
+                                <XMarkIcon className="h-8 w-8" />
                             ) : (
-                                <Bars3Icon className="mx-5  h-10 w-10 text-white-500" />
+                                <Bars3Icon className="h-8 w-8" />
                             )}
                     </button>
                 </div>
             </div>
             {/* Aquí añade el contenido del menú desplegable */}
             {isOpen && (
-                <div className="mt-4 md:hidden">
+                <div className="mx-auto mt-4 max-w-6xl border-t border-white/10 pt-3 md:hidden">
                     {
-                        MyNav.listnav[lang].map((item,index)=><Link key={index} to={'#'} onClick={()=>{scrollToSection(item.url);toggleNavbar();}} className="block text-white ml-10 my-4 text-xl font-bold">{item.text}</Link>)
+                        MyNav.listnav[lang].map((item,index)=><Link key={index} to={'#'} onClick={()=>{scrollToSection(item.url);toggleNavbar();}} className="my-4 block font-mono text-sm text-slate-300">{item.text}</Link>)
                     }
                 </div>
             )}

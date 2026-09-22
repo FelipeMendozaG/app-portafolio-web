@@ -1,3 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+	html { scroll-behavior: smooth; }
+	body { @apply bg-ink text-slate-100 font-sans antialiased; }
+	::selection { @apply bg-cyan/30 text-white; }
+}
+
+@layer components {
+	.eyebrow { @apply font-mono text-xs uppercase tracking-[0.22em] text-cyan; }
+	.glass { @apply border border-white/10 bg-white/[0.04] backdrop-blur-xl; }
+	.section-shell { @apply mx-auto w-full max-w-6xl px-5 py-24 sm:px-8; }
+}
