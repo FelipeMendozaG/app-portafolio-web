@@ -1,12 +1,14 @@
 import { useEffect, useState } from 'react';
 import flagusa from '../assets/flag_usa.png';
 import flagesp from '../assets/flag_spain.jpg';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import MyNav from '../data/nav'
 import { CodeBracketSquareIcon, Bars3Icon, XMarkIcon } from '@heroicons/react/24/solid'
 import {useLangProject} from '../app/store-zustand'
 
 const MyNavBar = () => {
+    const navigate = useNavigate();
+    const location = useLocation();
     const [isOpen, setIsOpen] = useState(false);
     const [
         lang,
@@ -30,6 +32,24 @@ const MyNavBar = () => {
         return () => observer.disconnect();
     }, []);
     const scrollToSection = (sectionId) => {
+        if (location.pathname !== '/') {
+            navigate('/');
+            setTimeout(() => {
+                if (sectionId === '/') {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                } else {
+                    const section = document.getElementById(sectionId);
+                    if (section) {
+                        section.scrollIntoView({ behavior: 'smooth' });
+                    }
+                }
+            }, 100);
+            return;
+        }
+        if (sectionId === '/') {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            return;
+        }
         const section = document.getElementById(sectionId);
         if (section) {
             section.scrollIntoView({ behavior: 'smooth' });
