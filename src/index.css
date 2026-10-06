@@ -15,3 +15,55 @@
 	.glass { @apply border border-white/10 bg-white/[0.04] backdrop-blur-xl; }
 	.section-shell { @apply mx-auto w-full max-w-6xl px-5 py-24 sm:px-8; }
 }
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+	width: 8px;
+	height: 8px;
+}
+::-webkit-scrollbar-track {
+	background: #080b12;
+}
+::-webkit-scrollbar-thumb {
+	background: #1e293b;
+	border-radius: 9999px;
+	border: 2px solid #080b12;
+}
+::-webkit-scrollbar-thumb:hover {
+	background: #67e8f9;
+}
+
+/* Swiper Custom Pagination & Navigation */
+.swiper-pagination-bullet {
+	background: #475569 !important;
+	opacity: 0.6 !important;
+	transition: all 0.3s ease;
+}
+.swiper-pagination-bullet-active {
+	background: #67e8f9 !important;
+	opacity: 1 !important;
+	width: 22px !important;
+	border-radius: 9999px !important;
+	box-shadow: 0 0 10px rgba(103, 232, 249, 0.6);
+}
+.swiper-button-next,
+.swiper-button-prev {
+	color: #67e8f9 !important;
+	background: rgba(17, 23, 34, 0.8);
+	border: 1px solid rgba(255, 255, 255, 0.1);
+	border-radius: 12px;
+	width: 36px !important;
+	height: 36px !important;
+	backdrop-filter: blur(8px);
+	transition: all 0.2s ease;
+}
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+	border-color: rgba(103, 232, 249, 0.5);
+	box-shadow: 0 0 12px rgba(103, 232, 249, 0.3);
+}
+.swiper-button-next::after,
+.swiper-button-prev::after {
+	font-size: 14px !important;
+	font-weight: bold;
+}

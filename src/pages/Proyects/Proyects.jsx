@@ -13,7 +13,9 @@ const Proyects = ()=>{
             </div>
             <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
                 {projects.map((project, index) => (
-                    <motion.div key={index} initial={{ opacity: 0, y: 18 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: index * .08 }}><CardProject project={project} /></motion.div>
+                    <motion.div key={index} initial={{ opacity: 0, y: 18 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: index * .08 }}>
+                        <CardProject project={project} index={index} />
+                    </motion.div>
                 ))}
             </div>
         </section>
